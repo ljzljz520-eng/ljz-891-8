@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>医疗设备维保授权查询</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>医疗设备维保授权查询</h1>
+      <p class="subtitle">请输入设备编号与服务商名称，核验维保授权信息</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 查询表单 -->
+    <section class="card" id="query-card">
+      <form id="query-form" novalidate>
+        <div class="form-row">
+          <label for="device-no">设备编号</label>
+          <input
+            type="text"
+            id="device-no"
+            name="deviceNo"
+            maxlength="64"
+            placeholder="例如：EQ-2024-00123"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div class="form-row">
+          <label for="vendor-name">服务商名称</label>
+          <input
+            type="text"
+            id="vendor-name"
+            name="vendorName"
+            maxlength="100"
+            placeholder="例如：深圳迈瑞生物医疗电子股份有限公司"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <p class="form-error" id="form-error" hidden></p>
+        <button type="submit" class="btn btn-primary" id="submit-btn">查 询</button>
+      </form>
+    </section>
+
+    <!-- 加载状态 -->
+    <div class="loading" id="loading" hidden>正在查询，请稍候…</div>
+
+    <!-- 查询结果：命中 -->
+    <section class="card result-card" id="result-card" hidden>
+      <div class="result-head">
+        <h2>维保授权信息</h2>
+        <span class="badge" id="validity-badge"></span>
+      </div>
+
+      <dl class="info-grid">
+        <div class="info-item">
+          <dt>设备编号</dt>
+          <dd id="r-device-no"></dd>
+        </div>
+        <div class="info-item">
+          <dt>设备名称</dt>
+          <dd id="r-device-name"></dd>
+        </div>
+        <div class="info-item">
+          <dt>服务商名称</dt>
+          <dd id="r-vendor-name"></dd>
+        </div>
+        <div class="info-item">
+          <dt>授权有效期</dt>
+          <dd><span id="r-valid-range"></span><span class="days-remaining" id="r-days-remaining"></span></dd>
+        </div>
+      </dl>
+
+      <div class="block">
+        <h3>维保范围</h3>
+        <p class="scope-text" id="r-scope"></p>
+      </div>
+
+      <div class="block">
+        <h3>授权工程师</h3>
+        <table class="engineer-table">
+          <thead>
+            <tr><th>姓名</th><th>资质证书编号</th><th>联系电话</th></tr>
+          </thead>
+          <tbody id="r-engineers"></tbody>
+        </table>
+      </div>
+
+      <div class="block service-phone-block">
+        <h3>服务电话</h3>
+        <a class="service-phone" id="r-service-phone" href="#"></a>
+        <p class="hint">报修时请提供设备编号，以便服务商快速受理</p>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn btn-secondary" id="back-btn-1">重新查询</button>
+      </div>
+    </section>
+
+    <!-- 查询结果：未命中 -->
+    <section class="card not-found-card" id="not-found-card" hidden>
+      <div class="not-found-head">
+        <span class="not-found-icon" aria-hidden="true">!</span>
+        <h2>未查询到对应的维保授权记录</h2>
+      </div>
+      <p class="not-found-desc">
+        请核对设备编号与服务商名称是否输入正确（注意字母大小写、数字与空格）。
+        若确认输入无误仍未查到，该设备可能尚未录入维保授权信息，请通过以下方式人工核验：
+      </p>
+      <div class="manual-verify">
+        <h3>人工核验方式</h3>
+        <ul>
+          <li>核验热线：<strong>400-100-8000</strong>（工作日 9:00–17:00）</li>
+          <li>核验邮箱：<strong>verify@hospital-example.cn</strong></li>
+          <li>需提供材料：设备铭牌照片、采购合同编号、服务商授权函扫描件</li>
+          <li>处理时限：材料齐全后 <strong>2 个工作日</strong>内反馈核验结果</li>
+        </ul>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn btn-primary" id="back-btn-2">重新输入</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>每次查询均会被系统记录，用于安全审计与追溯</span>
+      <a href="/admin.html">查询日志</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

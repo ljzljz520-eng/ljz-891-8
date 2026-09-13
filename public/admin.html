@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>查询日志追溯 - 医疗设备维保授权查询</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>查询日志追溯</h1>
+      <p class="subtitle">每次维保授权查询的审计记录（最近 200 条）</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="log-toolbar">
+        <label for="filter">筛选：</label>
+        <select id="filter">
+          <option value="all">全部</option>
+          <option value="hit">仅命中</option>
+          <option value="miss">仅未命中</option>
+        </select>
+        <button class="btn btn-secondary" id="refresh-btn">刷新</button>
+        <span id="log-count" class="hint"></span>
+      </div>
+      <div class="log-table-wrap">
+        <table class="log-table">
+          <thead>
+            <tr>
+              <th>#</th><th>查询时间</th><th>设备编号</th><th>服务商名称</th>
+              <th>结果</th><th>来源 IP</th>
+            </tr>
+          </thead>
+          <tbody id="log-body"></tbody>
+        </table>
+        <p class="empty-tip" id="empty-tip" hidden>暂无查询记录</p>
+      </div>
+      <a class="back-link" href="/">← 返回查询页</a>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var tbody = document.getElementById('log-body');
+      var emptyTip = document.getElementById('empty-tip');
+      var countEl = document.getElementById('log-count');
+      var filterSel = document.getElementById('filter');
+
+      function fmtTime(iso) {
+        var d = new Date(iso);
+        if (isNaN(d)) return iso;
+        var p = function (n) { return String(n).padStart(2, '0'); };
+        return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) +
+          ' ' + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+      }
+
+      function cell(text) {
+        var td = document.createElement('td');
+        td.textContent = text == null ? '' : String(text);
+        return td;
+      }
+
+      function load() {
+        fetch('/api/logs?limit=200&matched=' + filterSel.value)
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            tbody.innerHTML = '';
+            var logs = data.logs || [];
+            countEl.textContent = '共 ' + logs.length + ' 条';
+            emptyTip.hidden = logs.length > 0;
+            logs.forEach(function (log) {
+              var tr = document.createElement('tr');
+              tr.appendChild(cell(log.id));
+              tr.appendChild(cell(fmtTime(log.queriedAt)));
+              tr.appendChild(cell(log.deviceNo));
+              tr.appendChild(cell(log.vendorName));
+              var tdResult = document.createElement('td');
+              var tag = document.createElement('span');
+              tag.className = 'tag ' + (log.matched ? 'hit' : 'miss');
+              tag.textContent = log.matched ? '命中' : '未命中';
+              tdResult.appendChild(tag);
+              tr.appendChild(tdResult);
+              tr.appendChild(cell(log.ip));
+              tbody.appendChild(tr);
+            });
+          })
+          .catch(function () {
+            countEl.textContent = '加载失败，请稍后刷新重试';
+          });
+      }
+
+      document.getElementById('refresh-btn').addEventListener('click', load);
+      filterSel.addEventListener('change', load);
+      load();
+    })();
+  </script>
+</body>
+</html>

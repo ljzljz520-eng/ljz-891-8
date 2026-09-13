@@ -1,0 +1,15 @@
+{
+  "name": "medical-device-maintenance-query",
+  "version": "1.0.0",
+  "description": "医疗设备维保授权查询系统：医院按设备编号+服务商查询维保授权，后台记录查询日志便于追溯",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test/api.test.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
