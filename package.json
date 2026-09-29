@@ -1,0 +1,13 @@
+{
+  "name": "medical-maintenance-query",
+  "version": "1.0.0",
+  "description": "医疗设备维保授权查询系统 - 医院输入设备编号和服务商名称查询维保范围、授权工程师、有效期和服务电话，后台记录每次查询便于追溯",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "license": "ISC"
+}

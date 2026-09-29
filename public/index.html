@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>医疗设备维保授权查询系统</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-icon">⚕</div>
+        <div>
+          <h1>医疗设备维保授权查询系统</h1>
+          <p>Maintenance Authorization Query</p>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="/" class="active">维保授权查询</a>
+        <a href="/admin.html">查询记录追溯</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-title">
+      <h2>🔍 维保授权查询</h2>
+      <p>输入设备编号与服务商名称，查询设备维保范围、授权工程师、有效期及服务电话</p>
+    </div>
+
+    <!-- 查询表单 -->
+    <section class="card">
+      <div class="card-title">授权信息查询</div>
+      <form id="queryForm" novalidate>
+        <div class="query-form">
+          <div class="form-field">
+            <label for="equipmentCode">设备编号<span class="req">*</span></label>
+            <input type="text" id="equipmentCode" name="equipmentCode"
+                   placeholder="例如：GE-CT-2023-001" autocomplete="off" required>
+            <span class="field-error" id="err-equipmentCode"></span>
+          </div>
+          <div class="form-field">
+            <label for="providerName">服务商名称<span class="req">*</span></label>
+            <input type="text" id="providerName" name="providerName"
+                   placeholder="例如：通用电气医疗系统贸易发展（上海）有限公司" autocomplete="off" required>
+            <span class="field-error" id="err-providerName"></span>
+          </div>
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            <span>查询</span>
+          </button>
+        </div>
+      </form>
+      <p class="form-hint">
+        提示：设备编号可在设备铭牌、设备台账或设备验收报告中查找；服务商名称请填写维保合同中的全称。
+        每次查询都会被系统记录，便于维保工作追溯。
+      </p>
+    </section>
+
+    <!-- 加载中 -->
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p>正在查询维保授权信息…</p>
+    </div>
+
+    <!-- 查询结果 -->
+    <section class="result-area" id="resultArea"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>医疗设备维保授权查询系统 · 设备科 维保管理办公室 · 服务热线 400-888-0000</p>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

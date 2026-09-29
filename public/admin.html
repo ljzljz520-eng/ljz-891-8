@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>查询记录追溯 - 医疗设备维保授权查询系统</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-icon">⚕</div>
+        <div>
+          <h1>医疗设备维保授权查询系统</h1>
+          <p>Maintenance Authorization Query</p>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="/">维保授权查询</a>
+        <a href="/admin.html" class="active">查询记录追溯</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-title">
+      <h2>📜 查询记录追溯</h2>
+      <p>系统记录每一次维保授权查询，包含查询时间、设备编号、服务商、查询结果与来源 IP，便于事后追溯</p>
+    </div>
+
+    <!-- 统计概览 -->
+    <div class="stats-grid" id="statsGrid">
+      <div class="stat-card">
+        <div class="s-label">📊 累计查询次数</div>
+        <div class="s-value" id="stat-total">-</div>
+      </div>
+      <div class="stat-card found">
+        <div class="s-label">✓ 成功匹配授权</div>
+        <div class="s-value" id="stat-found">-</div>
+      </div>
+      <div class="stat-card notfound">
+        <div class="s-label">✕ 未查询到</div>
+        <div class="s-value" id="stat-notFound">-</div>
+      </div>
+      <div class="stat-card invalid">
+        <div class="s-label">⚠ 无效输入</div>
+        <div class="s-value" id="stat-invalid">-</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-label">🎯 匹配率</div>
+        <div class="s-value" id="stat-hitRate">-</div>
+      </div>
+    </div>
+
+    <!-- 记录列表 -->
+    <section class="card">
+      <div class="card-title">查询明细</div>
+      <div class="table-toolbar">
+        <div class="filter-tabs" id="filterTabs">
+          <button class="filter-tab active" data-filter="">全部</button>
+          <button class="filter-tab" data-filter="found">查询成功</button>
+          <button class="filter-tab" data-filter="not_found">未查询到</button>
+          <button class="filter-tab" data-filter="invalid">无效输入</button>
+        </div>
+        <div class="spacer"></div>
+        <a class="btn btn-secondary" href="/api/records/export" id="exportBtn">⬇ 导出 CSV</a>
+        <button class="btn btn-ghost" id="refreshBtn">🔄 刷新</button>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>查询时间</th>
+              <th>设备编号</th>
+              <th>服务商名称</th>
+              <th>查询结果</th>
+              <th>来源 IP</th>
+            </tr>
+          </thead>
+          <tbody id="recordsBody"></tbody>
+        </table>
+      </div>
+
+      <div id="emptyState" class="empty-state" style="display:none;">
+        <div class="e-icon">📭</div>
+        <p>暂无查询记录</p>
+      </div>
+
+      <div class="pagination">
+        <span id="pageInfo">-</span>
+        <div class="pages">
+          <button id="prevBtn" disabled>上一页</button>
+          <button id="nextBtn" disabled>下一页</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>医疗设备维保授权查询系统 · 设备科 维保管理办公室</p>
+  </footer>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>
