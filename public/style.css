@@ -1,0 +1,115 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  background: #f0f4f8;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+.container { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+
+/* ---------- 头部 ---------- */
+.site-header {
+  background: linear-gradient(135deg, #1565c0, #00838f);
+  color: #fff;
+  padding: 28px 0;
+}
+.site-header h1 { font-size: 24px; }
+.subtitle { opacity: .85; font-size: 14px; margin-top: 4px; }
+
+/* ---------- 卡片 ---------- */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  padding: 24px 28px;
+  margin: 24px 0;
+}
+.card h2 { font-size: 19px; margin-bottom: 8px; }
+.card h3 {
+  font-size: 15px; color: #1565c0;
+  margin: 20px 0 8px;
+  padding-left: 8px; border-left: 4px solid #1565c0;
+}
+.hint { color: #78909c; font-size: 13px; margin-bottom: 16px; }
+.hidden { display: none !important; }
+
+/* ---------- 表单 ---------- */
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 14px; }
+.required { color: #e53935; }
+.form-group input {
+  width: 100%; padding: 10px 12px;
+  border: 1px solid #cfd8dc; border-radius: 6px;
+  font-size: 15px; transition: border-color .2s;
+}
+.form-group input:focus { outline: none; border-color: #1565c0; box-shadow: 0 0 0 3px rgba(21,101,192,.12); }
+.field-error { display: block; color: #e53935; font-size: 12px; margin-top: 4px; min-height: 16px; }
+
+/* ---------- 按钮 ---------- */
+.btn {
+  border: none; border-radius: 6px; cursor: pointer;
+  font-size: 15px; padding: 10px 24px; transition: background .2s;
+}
+.btn-primary { background: #1565c0; color: #fff; width: 100%; }
+.btn-primary:hover { background: #0d47a1; }
+.btn-primary:disabled { background: #90a4ae; cursor: not-allowed; }
+.btn-secondary { background: #eceff1; color: #37474f; }
+.btn-secondary:hover { background: #cfd8dc; }
+.btn-sm { padding: 4px 14px; font-size: 13px; }
+
+/* ---------- 结果 ---------- */
+.result-header { display: flex; align-items: center; justify-content: space-between; }
+.badge { font-size: 13px; padding: 4px 12px; border-radius: 12px; font-weight: 600; }
+.badge.valid    { background: #e8f5e9; color: #2e7d32; }
+.badge.expiring { background: #fff8e1; color: #f57f17; }
+.badge.expired  { background: #ffebee; color: #c62828; }
+
+.info-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px;
+  margin-top: 14px; padding: 14px; background: #f7fafc; border-radius: 8px;
+}
+.info-item .label { color: #78909c; font-size: 13px; margin-right: 8px; }
+
+.scope-list { list-style: none; }
+.scope-list li { padding: 6px 0 6px 24px; position: relative; }
+.scope-list li::before { content: "✓"; color: #2e7d32; font-weight: 700; position: absolute; left: 4px; }
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #eceff1; }
+th { background: #f7fafc; color: #546e7a; font-weight: 600; }
+
+.validity-text { font-size: 15px; }
+.service-phone a { color: #1565c0; font-size: 20px; font-weight: 700; text-decoration: none; }
+
+.result-footer {
+  margin-top: 20px; padding-top: 14px; border-top: 1px dashed #cfd8dc;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+}
+.query-id { color: #90a4ae; font-size: 12px; }
+.query-id code { background: #eceff1; padding: 2px 6px; border-radius: 4px; }
+
+/* ---------- 未查到 ---------- */
+.notfound-title { color: #c62828; }
+.manual-verify {
+  background: #fff8e1; border: 1px solid #ffe082;
+  border-radius: 8px; padding: 16px 20px; margin: 14px 0 20px; font-size: 14px;
+}
+.manual-verify h3 { color: #f57f17; border-left-color: #f57f17; margin-top: 0; }
+.manual-verify ul, .manual-verify ol { padding-left: 22px; margin: 8px 0; }
+.hotline { margin-top: 10px; }
+
+/* ---------- 日志 ---------- */
+.log-table td.empty { text-align: center; color: #90a4ae; }
+.log-result-found     { color: #2e7d32; font-weight: 600; }
+.log-result-not_found { color: #c62828; font-weight: 600; }
+.log-result-invalid   { color: #f57f17; font-weight: 600; }
+
+/* ---------- 页脚 ---------- */
+.site-footer { text-align: center; color: #90a4ae; font-size: 12px; padding: 20px 0 32px; }
+
+@media (max-width: 600px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .card { padding: 18px; }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "medical-device-maintenance-query",
+  "version": "1.0.0",
+  "description": "医疗设备维保授权查询平台",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

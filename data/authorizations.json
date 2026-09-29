@@ -1,0 +1,69 @@
+[
+  {
+    "deviceNo": "EQ-CT-2024-001",
+    "deviceName": "GE Revolution CT 64排螺旋CT",
+    "providerName": "华康医疗设备服务有限公司",
+    "contractNo": "MT-2025-0001",
+    "scope": ["整机保修", "备件更换（含球管）", "年度预防性保养 2 次", "7×24 小时应急响应", "远程诊断支持"],
+    "engineers": [
+      { "name": "张伟", "certNo": "EN-2023-101", "skill": "CT 影像设备", "phone": "138****6001" },
+      { "name": "李敏", "certNo": "EN-2023-102", "skill": "CT 影像设备", "phone": "139****6002" }
+    ],
+    "validFrom": "2025-01-01",
+    "validTo": "2026-12-31",
+    "servicePhone": "400-800-1234"
+  },
+  {
+    "deviceNo": "EQ-MR-2023-015",
+    "deviceName": "西门子 MAGNETOM Vida 3.0T 磁共振",
+    "providerName": "华康医疗设备服务有限公司",
+    "contractNo": "MT-2024-0115",
+    "scope": ["整机保修", "冷头及磁体维护", "液氦补充（不含液氦费用）", "季度巡检", "7×24 小时应急响应"],
+    "engineers": [
+      { "name": "王强", "certNo": "EN-2022-087", "skill": "MR 磁共振设备", "phone": "137****6003" }
+    ],
+    "validFrom": "2024-06-01",
+    "validTo": "2026-05-31",
+    "servicePhone": "400-800-1234"
+  },
+  {
+    "deviceNo": "EQ-US-2025-008",
+    "deviceName": "飞利浦 EPIQ 7 彩色超声诊断仪",
+    "providerName": "康泰医工技术服务有限公司",
+    "contractNo": "MT-2025-0208",
+    "scope": ["主机保修", "探头保修（不含人为损坏）", "年度校准", "工作日 8 小时响应"],
+    "engineers": [
+      { "name": "陈晓", "certNo": "EN-2024-033", "skill": "超声影像设备", "phone": "136****6004" },
+      { "name": "刘洋", "certNo": "EN-2024-034", "skill": "超声影像设备", "phone": "135****6005" }
+    ],
+    "validFrom": "2025-03-01",
+    "validTo": "2027-02-28",
+    "servicePhone": "400-900-5678"
+  },
+  {
+    "deviceNo": "EQ-LA-2022-003",
+    "deviceName": "瓦里安 TrueBeam 直线加速器",
+    "providerName": "康泰医工技术服务有限公司",
+    "contractNo": "MT-2022-0903",
+    "scope": ["整机保修", "射束质量年度检测", "备件更换", "7×24 小时应急响应"],
+    "engineers": [
+      { "name": "赵磊", "certNo": "EN-2021-056", "skill": "放疗设备", "phone": "134****6006" }
+    ],
+    "validFrom": "2022-09-01",
+    "validTo": "2025-08-31",
+    "servicePhone": "400-900-5678"
+  },
+  {
+    "deviceNo": "EQ-MO-2024-021",
+    "deviceName": "德尔格 Primus 麻醉机",
+    "providerName": "安捷医疗科技（北京）有限公司",
+    "contractNo": "MT-2024-0521",
+    "scope": ["整机保修", "流量传感器年度更换", "半年度保养", "工作日 24 小时响应"],
+    "engineers": [
+      { "name": "孙丽", "certNo": "EN-2023-178", "skill": "麻醉与呼吸设备", "phone": "133****6007" }
+    ],
+    "validFrom": "2024-10-01",
+    "validTo": "2026-09-30",
+    "servicePhone": "400-700-8899"
+  }
+]

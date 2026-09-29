@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>医疗设备维保授权查询</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>医疗设备维保授权查询平台</h1>
+      <p class="subtitle">医院设备维保服务授权核验通道</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ========== 查询表单 ========== -->
+    <section id="query-section" class="card">
+      <h2>维保授权查询</h2>
+      <p class="hint">请输入设备编号与维保服务商名称，核验其维保授权信息。</p>
+      <form id="query-form" novalidate>
+        <div class="form-group">
+          <label for="deviceNo">设备编号 <span class="required">*</span></label>
+          <input type="text" id="deviceNo" name="deviceNo"
+                 placeholder="例如：EQ-CT-2024-001" autocomplete="off">
+          <span class="field-error" id="err-deviceNo"></span>
+        </div>
+        <div class="form-group">
+          <label for="providerName">服务商名称 <span class="required">*</span></label>
+          <input type="text" id="providerName" name="providerName"
+                 placeholder="例如：华康医疗设备服务有限公司（支持简称）" autocomplete="off">
+          <span class="field-error" id="err-providerName"></span>
+        </div>
+        <button type="submit" id="submit-btn" class="btn btn-primary">查询授权信息</button>
+      </form>
+    </section>
+
+    <!-- ========== 查询结果 ========== -->
+    <section id="result-section" class="card hidden">
+      <div class="result-header">
+        <h2>查询结果</h2>
+        <span id="validity-badge" class="badge"></span>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-item"><span class="label">设备编号</span><span id="r-deviceNo"></span></div>
+        <div class="info-item"><span class="label">设备名称</span><span id="r-deviceName"></span></div>
+        <div class="info-item"><span class="label">服务商</span><span id="r-providerName"></span></div>
+        <div class="info-item"><span class="label">维保合同号</span><span id="r-contractNo"></span></div>
+      </div>
+
+      <h3>维保范围</h3>
+      <ul id="r-scope" class="scope-list"></ul>
+
+      <h3>授权工程师</h3>
+      <table class="engineer-table">
+        <thead>
+          <tr><th>姓名</th><th>证书编号</th><th>专业方向</th><th>联系电话</th></tr>
+        </thead>
+        <tbody id="r-engineers"></tbody>
+      </table>
+
+      <h3>有效期</h3>
+      <p id="r-validity" class="validity-text"></p>
+
+      <h3>服务电话</h3>
+      <p class="service-phone"><a id="r-servicePhone" href="#"></a></p>
+
+      <div class="result-footer">
+        <span class="query-id">查询编号：<code id="r-queryId"></code>（本次查询已记录，可用于追溯）</span>
+        <button class="btn btn-secondary" id="btn-back-1">重新查询</button>
+      </div>
+    </section>
+
+    <!-- ========== 未查到 ========== -->
+    <section id="notfound-section" class="card hidden">
+      <h2 class="notfound-title">未查询到维保授权记录</h2>
+      <p id="nf-message" class="hint"></p>
+
+      <div class="manual-verify">
+        <h3>人工核验说明</h3>
+        <p>如您确认该设备已购买维保服务，可能是以下原因导致未查到：</p>
+        <ul>
+          <li>设备编号输入有误（请核对设备铭牌或资产标签上的编号）；</li>
+          <li>服务商名称与合同登记名称不一致（请使用合同上的全称或主要简称）；</li>
+          <li>维保合同尚未录入系统或正在续签流程中。</li>
+        </ul>
+        <p>请准备以下材料，联系平台客服进行人工核验：</p>
+        <ol>
+          <li>设备铭牌照片（含设备编号）；</li>
+          <li>维保合同或采购发票扫描件；</li>
+          <li>服务商出具的授权维修证明（如有）。</li>
+        </ol>
+        <p class="hotline">人工核验热线：<strong>400-100-0000</strong>（工作日 9:00–17:00）</p>
+        <p class="query-id">查询编号：<code id="nf-queryId"></code>（请向客服提供此编号以便快速定位）</p>
+      </div>
+
+      <button class="btn btn-primary" id="btn-back-2">重新输入查询</button>
+    </section>
+
+    <!-- ========== 查询追溯记录 ========== -->
+    <section id="log-section" class="card">
+      <div class="result-header">
+        <h2>查询记录（追溯）</h2>
+        <button class="btn btn-secondary btn-sm" id="btn-refresh-logs">刷新</button>
+      </div>
+      <table class="log-table">
+        <thead>
+          <tr><th>时间</th><th>设备编号</th><th>服务商</th><th>结果</th></tr>
+        </thead>
+        <tbody id="log-body">
+          <tr><td colspan="4" class="empty">暂无查询记录</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>医疗设备维保授权查询平台 · 每次查询均留存记录，仅供授权核验使用</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
